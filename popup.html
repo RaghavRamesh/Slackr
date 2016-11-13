@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Settings</title>
+
+  </head>
+  <body>
+    <h3>Settings</h3>
+    <p>Interval <input type="number" id="intervalField" min="0" value="15" step="5" onkeydown="return false" /> minutes</p>
+    <p>Custom title <input type="text" id="titleField" name="title" placeholder="Hey" /></p>
+    <p>Custom message <input type="text" id="messageField" name="message" placeholder="Are you working?" /></p>
+    <p><div id="displayLabel"></div></p>
+    <button id="saveBtn">Save</button>
+    <button id="stopBtn">Stop Slackr :(</button>
+  </body>
+  <script type="text/javascript" src="popup.js"></script>
+</html>
