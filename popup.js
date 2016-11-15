@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   var displayTimeout;
+  var displayTimeoutValue = 5000;
+
+  // Save button handler
   var saveButton = document.getElementById('saveBtn');
   saveButton.addEventListener('click', () => {
     if (document.getElementById("intervalField").value < 0) {
@@ -7,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById("intervalField").value = 15;
       displayTimeout = setTimeout(() => {
         document.getElementById("displayLabel").innerHTML = "";
-      }, 3000);
+      }, displayTimeoutValue);
 
       return;
     }
@@ -17,23 +20,46 @@ document.addEventListener('DOMContentLoaded', () => {
       message: document.getElementById("messageField").value || 'Are you working?',
       interval: document.getElementById("intervalField").value || 15,
     }
+
     console.log(options);
+
+    // Clear input
     document.getElementById("titleField").value = "";
     document.getElementById("intervalField").value = "";
     document.getElementById("messageField").value = "";
-    document.getElementById("displayLabel").innerHTML = "Settings saved! You can exit the popup now.";
+    document.getElementById("displayLabel").innerHTML = "Settings saved. You will be notified every " + options.interval + " minutes.";
+
     if (displayTimeout) clearTimeout(displayTimeout);
     displayTimeout = setTimeout(() => {
       document.getElementById("displayLabel").innerHTML = "";
-    }, 3000);
+    }, displayTimeoutValue);
+
     chrome.runtime.sendMessage({
-      message: "saveOptions",
+      message: "save",
       options: options
     }, (response) => {
       console.log(console.log("Response from script:", response.message));
     });
   });
 
+  // Test button handler
+  var testButton = document.getElementById('testBtn');
+  testButton.addEventListener('click', () => {
+    var options = {
+      title: document.getElementById("titleField").value || 'Hey!',
+      message: document.getElementById("messageField").value || 'Are you working?',
+      interval: document.getElementById("intervalField").value || 15,
+    }
+
+    chrome.runtime.sendMessage({
+      message: "test",
+      options: options
+    }, (response) => {
+      console.log(console.log("Response from script:", response.message));
+    });
+  });
+
+  // Stop button handler
   var stopButton = document.getElementById('stopBtn');
   stopButton.addEventListener('click', () => {
     chrome.runtime.sendMessage({message: "stop"}, (response) => {
@@ -43,6 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (displayTimeout) clearTimeout(displayTimeout);
     displayTimeout = setTimeout(() => {
       document.getElementById("displayLabel").innerHTML = "";
-    }, 3000);
+    }, displayTimeoutValue);
   });
 });
