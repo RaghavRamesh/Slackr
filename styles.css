@@ -1,0 +1,22 @@
+#closeBtn {
+  float:right;
+  box-shadow: none;
+  text-shadow: none;
+  border: none;
+  border-radius: 50%;
+  background: #ddd;
+  color: #999;
+}
+
+#closeBtn:hover {
+  background: #bbb;
+  color: #eee;
+}
+
+#stopBtn {
+  float: right;
+}
+
+#testBtn {
+  width: 100%;
+}

@@ -21,8 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
       interval: document.getElementById("intervalField").value || 15,
     }
 
-    console.log(options);
-
     // Clear input
     document.getElementById("titleField").value = "";
     document.getElementById("intervalField").value = "";
@@ -70,5 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
     displayTimeout = setTimeout(() => {
       document.getElementById("displayLabel").innerHTML = "";
     }, displayTimeoutValue);
+  });
+
+  // Close button handler
+  var closeButton = document.getElementById('closeBtn');
+  closeButton.addEventListener('click', () => {
+    window.close();
   });
 });
