@@ -14,9 +14,14 @@
 }
 
 #stopBtn {
+  width: 48%;
   float: right;
 }
 
 #testBtn {
+  width: 48%;
+}
+
+#saveBtn {
   width: 100%;
 }
