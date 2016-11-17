@@ -1,16 +1,24 @@
 #closeBtn {
-  float:right;
   box-shadow: none;
   text-shadow: none;
   border: none;
   border-radius: 50%;
-  background: #ddd;
+  background: #fff;
   color: #999;
+  outline: none;
+  position: absolute;
+  right: 8px;
+  top: 13px;
 }
 
 #closeBtn:hover {
-  background: #bbb;
-  color: #eee;
+  background: #ec8e92;
+  color: #fff;
+}
+
+#closeBtn:active {
+  background: #cc7d80;
+  color: #fff;
 }
 
 #stopBtn {
