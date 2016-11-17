@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Save button handler
   var saveButton = document.getElementById('saveBtn');
   saveButton.addEventListener('click', () => {
-    if (document.getElementById("intervalField").value < 0) {
-      document.getElementById("displayLabel").innerHTML = "Invalid interval value.";
-      document.getElementById("intervalField").value = 15;
+    if (document.getElementById("frequencyField").value < 1) {
+      document.getElementById("displayLabel").innerHTML = "Invalid frequence value.";
+      document.getElementById("frequencyField").value = 15;
       displayTimeout = setTimeout(() => {
         document.getElementById("displayLabel").innerHTML = "";
       }, displayTimeoutValue);
@@ -18,12 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
     var options = {
       title: document.getElementById("titleField").value || 'Hey!',
       message: document.getElementById("messageField").value || 'Are you working?',
-      interval: document.getElementById("intervalField").value || 15,
+      interval: document.getElementById("frequencyField").value || 15,
     }
 
     // Clear input
     document.getElementById("titleField").value = "";
-    document.getElementById("intervalField").value = "";
+    document.getElementById("frequencyField").value = "";
     document.getElementById("messageField").value = "";
     document.getElementById("displayLabel").innerHTML = "Settings saved. You will be notified every " + options.interval + " minutes.";
 
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var options = {
       title: document.getElementById("titleField").value || 'Hey!',
       message: document.getElementById("messageField").value || 'Are you working?',
-      interval: document.getElementById("intervalField").value || 15,
+      interval: document.getElementById("frequencyField").value || 15,
     }
 
     chrome.runtime.sendMessage({
