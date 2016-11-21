@@ -40,9 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Test button handler
-  var testButton = document.getElementById('testBtn');
-  testButton.addEventListener('click', () => {
+  // Preview button handler
+  var previewButton = document.getElementById('previewBtn');
+  previewButton.addEventListener('click', () => {
     var options = {
       title: document.getElementById("titleField").value || 'Hey!',
       message: document.getElementById("messageField").value || 'Are you working?',
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     chrome.runtime.sendMessage({
-      message: "test",
+      message: "preview",
       options: options
     }, (response) => {
       console.log(console.log("Response from script:", response.message));

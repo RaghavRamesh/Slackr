@@ -40,7 +40,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     cancelNotification();
 
     existingInterval = main(request.options);
-  } else if (request.message == "test") {
+  } else if (request.message == "preview") {
     createNotification(request.options.title, request.options.message);
   }else if (request.message == "stop") {
     cancelNotification();
